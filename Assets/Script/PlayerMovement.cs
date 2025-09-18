@@ -8,12 +8,22 @@ public class PersonajeScript : MonoBehaviour
     Rigidbody rb;
     Animator _animator;
     Vector3 _input;
+    public Camera _cam;
+    Vector3 forward, right;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         _animator = GetComponent<Animator>();
+
+        forward  = _cam.transform.forward;
+        forward.y = 0f;
+        forward = Vector3.Normalize(forward);
+
+        right = _cam.transform.forward; 
+        right.y = 0f;
+        right = Vector3.Normalize(right);
     }
 
     void Update()
